@@ -177,6 +177,8 @@ hooks:
 plugins:
   - search:
       lang: en
+  - pandoc
+  - with-pdf
   - markdown-exec
   - material-plausible
   - macros:
