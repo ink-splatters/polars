@@ -23,7 +23,12 @@ mkShell.override { inherit stdenv; } rec {
     ++ lib.optionals stdenv.isDarwin (
       with darwin.apple_sdk.frameworks;
       [
+        AppKit
+        CoreFoundation
+        Foundation
+        IOKit
         Security
+        System
         SystemConfiguration
       ]
       ++ [ iconv ]
