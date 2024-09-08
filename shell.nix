@@ -5,6 +5,8 @@ let
     jemalloc = jemalloc.override { disableInitExecTls = true; };
   };
   general-libs = [
+    pkg-config
+    graphviz
     glib
     pango
     harfbuzz
@@ -17,7 +19,7 @@ mkShell.override { inherit stdenv; } rec {
     llvm_18
     gnumake
     pandoc
-    texliveMinimal
+    texlive.combined.scheme-small
     cmake
     ninja
   ];
