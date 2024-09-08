@@ -1,6 +1,5 @@
 with import <nixpkgs> { };
 let
-  getLibPath = lib: builtins.concatStringsSep ":" (map (lib: "${lib.out.outPath}/lib") lib);
   inherit (llvmPackages_18) stdenv;
   rust-jemalloc-sys' = rust-jemalloc-sys.override {
     jemalloc = jemalloc.override { disableInitExecTls = true; };
@@ -9,7 +8,7 @@ let
     glib
     pango
     harfbuzz
-    fontconfig.lib
+    fontconfig
   ];
 in
 mkShell.override { inherit stdenv; } rec {
@@ -28,7 +27,8 @@ mkShell.override { inherit stdenv; } rec {
   ];
 
   buildInputs =
-    [
+    general-libs
+    ++ [
       zlib-ng
       rust-jemalloc-sys'
     ]
@@ -51,6 +51,6 @@ mkShell.override { inherit stdenv; } rec {
       varPrefix = if stdenv.isDarwin then "DYLD" else "LD";
     in
     ''
-      export ${varPrefix}_LIBRARY_PATH="${getLibPath general-libs}"
+      export ${varPrefix}_LIBRARY_PATH="${lib.makeLibraryPath general-libs}"
     '';
 }

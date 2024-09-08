@@ -178,7 +178,9 @@ plugins:
   - search:
       lang: en
   - pandoc
-  - with-pdf
+  - with-pdf:
+      enabled_if_env: ENABLE_PDF_EXPORT
+      output_path: "pdf/polars.pdf"
   - markdown-exec
   - material-plausible
   - macros:
