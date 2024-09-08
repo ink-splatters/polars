@@ -177,10 +177,6 @@ hooks:
 plugins:
   - search:
       lang: en
-  - pandoc
-  - with-pdf:
-      enabled_if_env: ENABLE_PDF_EXPORT
-      output_path: "pdf/polars.pdf"
   - markdown-exec
   - material-plausible
   - macros:
@@ -192,3 +188,4 @@ plugins:
         'user-guide/basics/reading-writing.md': 'user-guide/getting-started.md'
         'user-guide/basics/expressions.md': 'user-guide/getting-started.md'
         'user-guide/basics/joins.md': 'user-guide/getting-started.md'
+  - print-site
