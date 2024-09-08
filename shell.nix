@@ -19,7 +19,7 @@ mkShell.override { inherit stdenv; } rec {
   ];
 
   buildInputs =
-    [ rust-jemalloc-sys' ]
+    [ zlib-ng rust-jemalloc-sys' ]
     ++ lib.optionals stdenv.isDarwin (
       with darwin.apple_sdk.frameworks;
       [
